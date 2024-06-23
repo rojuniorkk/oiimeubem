@@ -1,0 +1,60 @@
+<section class="a-repeat" style="animation-name: jumping; animation-duration: 3s;">
+    <section class="position-relative">
+        <img width="500" src="./assets/image/casar.png" alt="">
+    </section>
+
+    <section class="position-absolute translate-middle  text-start" style="bottom: 7%; right:-5%; width: 170px;">
+        <section class="position-relative">
+            <button id="assinatura" class="btn w-100 cursive" style="height: 40px; color: red;"></button>
+        </section>
+    </section>
+
+    <section id="aviso" class="position-absolute" style="right: -50%;  bottom: 6%;">
+        <h4 style="animation-name: left-point; animation-duration: 1s;" class="w-100 fw-bold a-repeat">
+            <img src="./assets/image/dedo-left.png" width="80" alt=""> Assine aqui mb 💗
+        </h4>
+    </section>
+</section>
+
+<script>
+
+    async function ASSINAR(BUTTON) {
+        let NAME = "Camilly Eduarda"
+
+
+        for (let L = 0; L < NAME.length; L++) {
+            BUTTON.innerHTML += NAME[L]
+            await sleep(.15 * 1000);
+        }
+
+        MainAnimation((e) => {
+
+            $('#fake-main').load('./assets/includes/carta.html');
+            $('#player-modal').load('./assets/includes/player.html');
+            $('header').load('./assets/includes/header.html');
+
+
+            _player.musica.currentTime = 127;
+            _player.musica.play();
+
+            e.obj.addEventListener('animationend', () => {
+                fetch('./assets/files/mensagem.txt')
+                    .then(response => response.text())
+                    .then(text => {
+                        createText('text-line', text,)
+                    })
+            })
+
+        }, "down", { reverse: true })
+    }
+
+
+    var B_ASSINATURA = document.getElementById('assinatura');
+    B_ASSINATURA.addEventListener('click', () => {
+
+        document.getElementById('aviso').style.display = 'none'
+        return ASSINAR(B_ASSINATURA)
+    })
+
+
+</script>
